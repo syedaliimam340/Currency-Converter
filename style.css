@@ -1,0 +1,270 @@
+/* style.css - Anime themed Currency Converter */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 25%, #a18cd1 50%, #fbc2eb 75%, #84fab0 100%);
+  background-size: 400% 400%;
+  animation: animeBg 15s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes animeBg {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating sakura petals vibe */
+body::before,
+body::after {
+  content: "🌸";
+  position: fixed;
+  font-size: 2rem;
+  opacity: 0.6;
+  animation: floatPetal 12s linear infinite;
+  pointer-events: none;
+}
+body::before { top: -10%; left: 10%; }
+body::after  { top: -10%; left: 70%; animation-delay: 6s; }
+
+@keyframes floatPetal {
+  0%   { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* ---------------- Container ---------------- */
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 2px solid rgba(255, 105, 180, 0.4);
+  border-radius: 24px;
+  padding: 30px 25px;
+  box-shadow:
+    0 10px 30px rgba(255, 105, 180, 0.3),
+    0 0 0 4px rgba(255, 255, 255, 0.4) inset;
+  animation: popIn 0.8s ease;
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 8px rgba(255, 60, 172, 0.2);
+}
+
+/* ---------------- Form ---------------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: #5a2a82;
+}
+
+.amount input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #ffb6d9;
+  border-radius: 12px;
+  background: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+.amount input:focus {
+  border-color: #ff3cac;
+  box-shadow: 0 0 0 4px rgba(255, 60, 172, 0.15);
+}
+
+/* ---------------- Dropdown row ---------------- */
+.dropdown {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.from, .to {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.from p, .to p {
+  font-weight: 600;
+  color: #5a2a82;
+}
+
+.select-container {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 2px solid #ffb6d9;
+  border-radius: 12px;
+  padding: 6px 10px;
+  transition: 0.3s;
+}
+.select-container:hover { border-color: #ff3cac; }
+
+.flag-container img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.select-container select {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Swap icon */
+.fa-arrow-right-arrow-left {
+  align-self: center;
+  font-size: 1.3rem;
+  color: #ff3cac;
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(255, 60, 172, 0.3);
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+.fa-arrow-right-arrow-left:hover {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* ---------------- Button ---------------- */
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(120, 75, 160, 0.4);
+  transition: 0.4s;
+}
+button:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(120, 75, 160, 0.5);
+}
+button:active { transform: translateY(0); }
+
+/* ---------------- Message ---------------- */
+.msg {
+  margin-top: 20px;
+  padding: 16px 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(90deg, #ff6a88, #ff99ac);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(255, 106, 136, 0.4);
+  max-width: 480px;
+  width: 100%;
+  animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(255, 106, 136, 0.4); }
+  to   { box-shadow: 0 0 25px rgba(255, 60, 172, 0.7); }
+}
+
+/* ---------------- Responsive: Tablet ---------------- */
+@media (max-width: 768px) {
+  .container { max-width: 90%; padding: 25px 20px; }
+  h2 { font-size: 1.5rem; }
+  .dropdown { gap: 10px; }
+  .from, .to { min-width: 120px; }
+}
+
+/* ---------------- Responsive: Mobile ---------------- */
+@media (max-width: 480px) {
+  body { padding: 12px; }
+
+  .container {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  h2 { font-size: 1.3rem; margin-bottom: 18px; }
+
+  .dropdown {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .from, .to { min-width: 100%; }
+
+  .fa-arrow-right-arrow-left {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+  .fa-arrow-right-arrow-left:hover {
+    transform: rotate(270deg) scale(1.1);
+  }
+
+  .flag-container img { width: 28px; height: 28px; }
+  .select-container select { font-size: 0.95rem; }
+
+  button { padding: 12px; font-size: 1rem; }
+  .msg { font-size: 1rem; padding: 14px 18px; }
+}
+
+/* ---------------- Large laptop / desktop ---------------- */
+@media (min-width: 1200px) {
+  .container { max-width: 520px; padding: 40px 35px; }
+  h2 { font-size: 2rem; }
+  button { font-size: 1.15rem; }
+}
