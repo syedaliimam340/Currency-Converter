@@ -1,5 +1,4 @@
-const API_KEY = "4ddcd9343ea39897d305bf5f";
-const base_url = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair`;
+const base_url = `/api/convert`;
 
 const countryList = {
   "USD": "US",
@@ -224,7 +223,7 @@ function initializeApp() {
       document.querySelector(".amount input").value = amount;
     }
 
-    const URL = `${base_url}/${fromCurr.value}/${toCurr.value}`;
+    const URL = `${base_url}?from=${fromCurr.value}&to=${toCurr.value}`;
     try {
       let response = await fetch(URL);
       let data = await response.json();
